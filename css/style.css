@@ -1,16 +1,15 @@
-/* ========== RESET ========== */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ========== BASE STYLING ========== */
+/* BASE  */
 html, body {
   width: 100%;
-  overflow-x: hidden; /* Prevents side scroll on mobile */
+  overflow-x: hidden;
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
   background-color: #f9f9f9;
   color: #333;
   display: flex;
@@ -18,26 +17,29 @@ html, body {
   min-height: 100vh;
 }
 
-/* ========== NAVBAR ========== */
+/*  NAVBAR */
 .navbar {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   background-color: #0077cc;
   padding: 10px 5%;
+  text-align: center;
 }
 
 .logo {
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -54,34 +56,26 @@ html, body {
   background-color: #005fa3;
 }
 
-/* ========== MAIN CONTENT ========== */
+/* MAIN CONTENT */
 .content {
   flex: 1;
   padding: 20px;
   width: 100%;
 }
 
-section {
-  width: 100%;
-  max-width: 100%;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
 section h2 {
-  margin-bottom: 10px;
   color: #005fa3;
+  margin-bottom: 10px;
 }
 
-/* ========== IMAGES & MEDIA ========== */
-img, video, iframe {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 5px;
+section p {
+  line-height: 1.6;
 }
 
-/* ========== FOOTER ========== */
+article {
+  margin-bottom: 2rem;
+}
+
 footer {
   text-align: center;
   background-color: #0077cc;
@@ -90,36 +84,19 @@ footer {
   margin-top: auto;
 }
 
-/* ========== RESPONSIVE DESIGN ========== */
-
-/* Tablets and up */
+/* RESPONSIVE DESIGN */
 @media (min-width: 600px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .logo {
+    margin-bottom: 0;
+  }
+
   .content {
     padding: 40px;
-  }
-
-  .nav-links {
-    gap: 20px;
-  }
-
-  .logo {
-    font-size: 1.4rem;
-  }
-}
-
-/* Small phones */
-@media (max-width: 400px) {
-  .nav-links {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .navbar {
-    align-items: flex-start;
-  }
-
-  .logo {
-    margin-bottom: 10px;
   }
 }
