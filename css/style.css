@@ -139,6 +139,56 @@ body.dark-mode footer {
   color: #ccc;
 }
 
+/* JOURNAL ENTRY FORM */
+#entry-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#entry-form button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* SAVED ENTRIES */
+#entry-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+#entry-list li {
+  background-color: #f0f0f0;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#entry-list button.delete-entry {
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-top: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* YOUTUBE EMBED */
+#youtube-video iframe {
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
 /* RESPONSIVE */
 @media (min-width: 600px) {
   .navbar {
