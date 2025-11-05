@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const navContainer = document.getElementById("nav-container");
   if (navContainer) {
     navContainer.innerHTML = navHTML;
-
-    // Highlight active link
     const currentPage = window.location.pathname.split("/").pop() || "index.html";
     const links = navContainer.querySelectorAll(".nav-links a");
     links.forEach(link => {
@@ -25,19 +23,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Live date on homepage
+  // Live date
   const dateEl = document.getElementById("live-date");
   if (dateEl) {
     const now = new Date();
     dateEl.textContent = now.toLocaleDateString(undefined, {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric"
+      weekday: "long", year: "numeric", month: "long", day: "numeric"
     });
   }
 
-  // Collapsible journal entries
+  // Collapsible entries
   const collapsibles = document.querySelectorAll(".collapsible");
   collapsibles.forEach(btn => {
     btn.addEventListener("click", () => {
