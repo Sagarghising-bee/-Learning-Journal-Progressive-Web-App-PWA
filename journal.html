@@ -1,66 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learning Journal - Journal</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header>
-    <nav class="navbar">
-      <h1 class="logo">My Learning Journal</h1>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="journal.html" class="active">Journal</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </nav>
+    <div id="nav-container"></div>
   </header>
 
-<main class="content">
-  <section>
-    <h2>Weekly Journal</h2>
+  <main class="content">
+    <button id="theme-toggle" class="theme-btn">🌙 Toggle Dark Mode</button>
+    <section>
+      <h2>Weekly Journal</h2>
+      
+      <article>
+  <button class="collapsible">Hide Entry</button>
+  <div class="collapsible-content">
+    <h3>Week 3 Entry</h3>
+    <h3>Reflection</h3>
 
-    <article>
-      <h3>Week 2 Entry</h3>
-      <p><strong>How did you approach mobile-first design?</strong><br>
-      I started by designing for small screens first, using flexible layouts and percentages instead of fixed widths. 
-      Then I added media queries to adjust the spacing and layout for larger devices.</p>
+    <p><strong>Which DOM selection methods did you use, and why?</strong><br>
+    I used <code>getElementById</code> to target specific elements like the theme toggle and live date, and <code>querySelectorAll</code> to select multiple collapsible buttons and nav links. These methods gave me precise control over the page structure and allowed me to apply interactivity efficiently.</p>
 
-      <p><strong>Most useful HTML/CSS concept?</strong><br>
-      Using Flexbox helped me organize my navigation and page structure easily while keeping it responsive.</p>
+    <p><strong>What was the most challenging part about linking JavaScript with your HTML?</strong><br>
+    The trickiest part was replacing the static navigation with a reusable one injected via JavaScript. I had to make sure the active link was highlighted correctly and that the layout didn’t break across pages. Debugging the collapsible sections also took time, especially making sure the toggle button updated its label dynamically.</p>
 
-      <p><strong>Most challenging part?</strong><br>
-      The hardest part was fixing layout issues on mobile view, especially when content or padding caused the page to scroll sideways. 
-      I learned how to use <code>overflow-x: hidden</code> and flexible widths to make everything fit properly.</p>
-    </article>
-    <article>
-      <h3>Week 1 Entry</h3>
-      <h3> Reflection </h3>
-      <p>This was my first time building mobile apps, and I learned a lot!</p>
-      <p>I made the same Temperature Converter app two different ways:</p>
-      <ul>
-        <li><strong>As a Website (PWA):</strong> Works in any browser and can be installed like an app.</li>
-        <li><strong>As a Native Android App:</strong> A real app installed from Android Studio.</li>
-      </ul>
-      <p><strong>What I Learned:</strong></p>
-      <ul>
-        <li>GitHub is like a "save button" for code</li>
-        <li>VS Code is where I write my website code</li>
-        <li>Android Studio is for making Android apps (but it's slow!)</li>
-        <li>PythonAnywhere puts my website online for everyone to see</li>
-      </ul>
-      <p><strong>The Big Challenge:</strong><br>
-      Each tool had its own problems. The website didn’t want to install, Android Studio kept crashing, and putting the website online was confusing. But I fixed each problem one by one.</p>
-      <p>Now I understand the difference between making a website that acts like an app versus making a real Android app. It was hard work, but I got everything working in the end!</p>
-    </article>
-  </section>
-</main>
+    <p><strong>How did you test and debug your JavaScript code?</strong><br>
+    I used <code>console.log()</code> to trace DOM selections and event triggers. I also refreshed each page after changes to confirm the nav injection, dark mode toggle, and collapsible sections worked consistently. Chrome DevTools helped me inspect elements and tweak styles live. Once everything behaved as expected, I committed the updates to GitHub for version control.</p>
+
+    <p><strong>What did you learn?</strong><br>
+    I learned how powerful the DOM is for building reusable and interactive components. Injecting navigation, toggling themes, and collapsing content all helped me understand how JavaScript can control both structure and style dynamically. It made my Learning Journal feel like a real app!</p>
+  </div>
+</article>
+
+
+      <article>
+        <button class="collapsible">Hide Entry</button>
+        <div class="collapsible-content">
+          <h3>Week 2 Entry</h3>
+          <p><strong>How did you approach mobile-first design?</strong><br>
+          I started by designing for small screens first, using flexible layouts and percentages instead of fixed widths. 
+          Then I added media queries to adjust the spacing and layout for larger devices.</p>
+
+          <p><strong>Most useful HTML/CSS concept?</strong><br>
+          Using Flexbox helped me organize my navigation and page structure easily while keeping it responsive.</p>
+
+          <p><strong>Most challenging part?</strong><br>
+          The hardest part was fixing layout issues on mobile view, especially when content or padding caused the page to scroll sideways. 
+          I learned how to use <code>overflow-x: hidden</code> and flexible widths to make everything fit properly.</p>
+        </div>
+      </article>
+
+      <article>
+        <button class="collapsible">Hide Entry</button>
+        <div class="collapsible-content">
+          <h3>Week 1 Entry</h3>
+          <h3>Reflection</h3>
+          <p>This was my first time building mobile apps, and I learned a lot!</p>
+          <p>I made the same Temperature Converter app two different ways:</p>
+          <ul>
+            <li><strong>As a Website (PWA):</strong> Works in any browser and can be installed like an app.</li>
+            <li><strong>As a Native Android App:</strong> A real app installed from Android Studio.</li>
+          </ul>
+          <p><strong>What I Learned:</strong></p>
+          <ul>
+            <li>GitHub is like a "save button" for code</li>
+            <li>VS Code is where I write my website code</li>
+            <li>Android Studio is for making Android apps (but it's slow!)</li>
+            <li>PythonAnywhere puts my website online for everyone to see</li>
+          </ul>
+          <p><strong>The Big Challenge:</strong><br>
+          Each tool had its own problems. The website didn’t want to install, Android Studio kept crashing, and putting the website online was confusing. But I fixed each problem one by one.</p>
+          <p>Now I understand the difference between making a website that acts like an app versus making a real Android app. It was hard work, but I got everything working in the end!</p>
+        </div>
+      </article>
+    </section>
+  </main>
 
   <footer>
     <p>© 2025 My Learning Journal</p>
   </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
