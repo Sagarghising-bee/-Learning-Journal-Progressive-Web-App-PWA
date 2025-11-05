@@ -7,36 +7,68 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <div id="nav-container"></div>
-  </header>
+  <header><div id="nav-container"></div></header>
 
   <main class="content">
     <button id="theme-toggle" class="theme-btn">🌙 Toggle Dark Mode</button>
+
+    <!-- Storage API: Journal Entry Form -->
+    <section>
+      <h2>Write a Journal Entry</h2>
+      <form id="entry-form">
+        <textarea id="entry-text" rows="5" placeholder="Write your journal entry..."></textarea><br>
+        <button type="submit">💾 Save Entry</button>
+      </form>
+
+      <h3>Saved Entries</h3>
+      <ul id="entry-list" style="list-style: none; padding-left: 0;"></ul>
+    </section>
+
+    <!-- Weekly Journal Entries -->
     <section>
       <h2>Weekly Journal</h2>
-      
+
+      <!-- Week 4 -->
       <article>
-  <button class="collapsible">Hide Entry</button>
-  <div class="collapsible-content">
-    <h3>Week 3 Entry</h3>
-    <h3>Reflection</h3>
+        <button class="collapsible">Hide Entry</button>
+        <div class="collapsible-content">
+          <h3>Week 4 Entry</h3>
+          <h3>What Storage,Browser, and third party APIs did you choose,and why?</h3>
+          <p id="week4-text">
+            I used <code>localStorage</code> to save theme preference and journal entry drafts. For the Browser API, I added a Clipboard API button to copy journal entries. For the Third-Party API, I embedded a YouTube video using the YouTube iframe embed method to showcase a tutorial I found helpful.
+          </p>
+          <p><strong>How did you integrate each API with DOM manipulation?</strong><br>
+          I used <code>localStorage.getItem()</code> and <code>setItem()</code> to persist theme and entry data. The Clipboard API was triggered by a button click using <code>navigator.clipboard.writeText()</code>. The YouTube video was inserted dynamically using <code>innerHTML</code> on a container element.</p>
 
-    <p><strong>Which DOM selection methods did you use, and why?</strong><br>
-    I used <code>getElementById</code> to target specific elements like the theme toggle and live date, and <code>querySelectorAll</code> to select multiple collapsible buttons and nav links. These methods gave me precise control over the page structure and allowed me to apply interactivity efficiently.</p>
+          <p><strong>What challenges did you encounter, and how did you solve them?</strong><br>
+          The biggest challenge was making sure the theme preference persisted across reloads and pages. I solved it by checking localStorage on page load and updating the toggle button label accordingly. I also had to handle clipboard permissions gracefully.</p>
 
-    <p><strong>What was the most challenging part about linking JavaScript with your HTML?</strong><br>
-    The trickiest part was replacing the static navigation with a reusable one injected via JavaScript. I had to make sure the active link was highlighted correctly and that the layout didn’t break across pages. Debugging the collapsible sections also took time, especially making sure the toggle button updated its label dynamically.</p>
+          <p><strong>In what ways do these APIs improve your Learning Journal PWA?</strong><br>
+          These APIs make the journal more interactive and user-friendly. Users can copy entries, enjoy consistent theme settings, and view external content like videos — all without leaving the app.</p>
+          <button class="copy-entry">📋 Copy Entry</button>
+        </div>
+      </article>
 
-    <p><strong>How did you test and debug your JavaScript code?</strong><br>
-    I used <code>console.log()</code> to trace DOM selections and event triggers. I also refreshed each page after changes to confirm the nav injection, dark mode toggle, and collapsible sections worked consistently. Chrome DevTools helped me inspect elements and tweak styles live. Once everything behaved as expected, I committed the updates to GitHub for version control.</p>
+      <!-- Week 3 -->
+      <article>
+        <button class="collapsible">Hide Entry</button>
+        <div class="collapsible-content">
+          <h3>Week 3 Entry</h3>
+          <p><strong>Which DOM selection methods did you use, and why?</strong><br>
+          I used <code>getElementById</code> to target specific elements like the theme toggle and live date, and <code>querySelectorAll</code> to select multiple collapsible buttons and nav links. These methods gave me precise control over the page structure and allowed me to apply interactivity efficiently.</p>
 
-    <p><strong>What did you learn?</strong><br>
-    I learned how powerful the DOM is for building reusable and interactive components. Injecting navigation, toggling themes, and collapsing content all helped me understand how JavaScript can control both structure and style dynamically. It made my Learning Journal feel like a real app!</p>
-  </div>
-</article>
+          <p><strong>What was the most challenging part about linking JavaScript with your HTML?</strong><br>
+          The trickiest part was replacing the static navigation with a reusable one injected via JavaScript. I had to make sure the active link was highlighted correctly and that the layout didn’t break across pages. Debugging the collapsible sections also took time, especially making sure the toggle button updated its label dynamically.</p>
 
+          <p><strong>How did you test and debug your JavaScript code?</strong><br>
+          I used <code>console.log()</code> to trace DOM selections and event triggers. I also refreshed each page after changes to confirm the nav injection, dark mode toggle, and collapsible sections worked consistently. Chrome DevTools helped me inspect elements and tweak styles live. Once everything behaved as expected, I committed the updates to GitHub for version control.</p>
 
+          <p><strong>What did you learn?</strong><br>
+          I learned how powerful the DOM is for building reusable and interactive components. Injecting navigation, toggling themes, and collapsing content all helped me understand how JavaScript can control both structure and style dynamically. It made my Learning Journal feel like a real app!</p>
+        </div>
+      </article>
+
+      <!-- Week 2 -->
       <article>
         <button class="collapsible">Hide Entry</button>
         <div class="collapsible-content">
@@ -54,6 +86,7 @@
         </div>
       </article>
 
+      <!-- Week 1 -->
       <article>
         <button class="collapsible">Hide Entry</button>
         <div class="collapsible-content">
@@ -78,12 +111,20 @@
         </div>
       </article>
     </section>
+
+    <!-- Third-Party API: YouTube Embed -->
+    <section>
+      <h2>Helpful Tutorial</h2>
+      <div id="youtube-video"></div>
+    </section>
   </main>
 
-  <footer>
-    <p>© 2025 My Learning Journal</p>
-  </footer>
+  <footer><p>© 2025 My Learning Journal</p></footer>
 
+  <!-- Modular JS files -->
   <script src="js/script.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/browser.js"></script>
+  <script src="js/thirdparty.js"></script>
 </body>
 </html>
