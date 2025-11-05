@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-/* BASE  */
+/* BASE */
 html, body {
   width: 100%;
   overflow-x: hidden;
@@ -17,7 +17,7 @@ html, body {
   min-height: 100vh;
 }
 
-/*  NAVBAR */
+/* NAVBAR */
 .navbar {
   display: flex;
   flex-direction: column;
@@ -84,7 +84,62 @@ footer {
   margin-top: auto;
 }
 
-/* RESPONSIVE DESIGN */
+/* INTERACTIVE */
+.date-display {
+  font-style: italic;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.collapsible {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.collapsible-content.collapsed {
+  display: none;
+}
+
+.theme-btn {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+/* DARK MODE */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .navbar {
+  background-color: #003d66;
+}
+
+body.dark-mode .nav-links a:hover,
+body.dark-mode .nav-links a.active {
+  background-color: #005fa3;
+}
+
+body.dark-mode section h2 {
+  color: #90caf9;
+}
+
+body.dark-mode footer {
+  background-color: #003d66;
+  color: #ccc;
+}
+
+/* RESPONSIVE */
 @media (min-width: 600px) {
   .navbar {
     flex-direction: row;
