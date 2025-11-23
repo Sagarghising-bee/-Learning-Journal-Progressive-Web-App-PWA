@@ -2,12 +2,14 @@ import json
 from datetime import datetime
 
 def main():
-    # Ask user for reflection input
+    print("\n=== Add New Reflection ===")
+    
+    # Get user input
     reflection_text = input("Enter your reflection: ")
     
-    # Create reflection data
+    # Create reflection with date
     reflection = {
-        "date": datetime.now().strftime("%Y-%m-%d"),
+        "date": datetime.now().strftime("%Y-%m-%d %H:%M"),
         "content": reflection_text
     }
     
@@ -25,7 +27,7 @@ def main():
     with open('reflections.json', 'w') as file:
         json.dump(reflections, file, indent=2)
     
-    print("Reflection saved successfully!")
+    print(f"Reflection saved! Total reflections: {len(reflections)}")
 
 if __name__ == "__main__":
     main()
