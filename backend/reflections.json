@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "date": "2025-11-22 11:55",
+    "content": "Learning Python JSON integration for backend data storage"
+  },
+  {
+    "date": "2025-11-22 11:49",
+    "content": "Implemented export button feature for JSON downloads"
+  },
+  {
+    "date": "2025-11-22 11:45",
+    "content": "Compared browser storage vs JSON file storage differences"
+  },
+  {
+    "date": "2025-11-22 11:20",
+    "content": "Python script working smoothly with PWA integration"
+  },
+  {
+    "date": "2025-11-22 09:30",
+    "content": "Completed Week 5 lab requirements with JSON backend"
+  }
+]
