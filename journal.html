@@ -12,6 +12,26 @@
   <main class="content">
     <button id="theme-toggle" class="theme-btn">🌙 Toggle Dark Mode</button>
 
+    <!-- JSON Backend Section -->
+    <section>
+      <h2>JSON Backend Reflections</h2>
+      <p>Reflections stored in JSON file using Python:</p>
+      
+      <!-- Export button will be inserted here by JavaScript -->
+      <div id="json-reflections-container">
+        <p>Loading reflections...</p>
+      </div>
+      
+      <div class="python-info">
+        <h3>How to use:</h3>
+        <ol>
+          <li>Run: <code>python backend/save_entry.py</code> to add reflections</li>
+          <li>Click "Export" button to download your reflections as JSON</li>
+          <li>Refresh page to see new reflections</li>
+        </ol>
+      </div>
+    </section>
+
     <!-- Storage API: Journal Entry Form -->
     <section>
       <h2>Write a Journal Entry</h2>
@@ -28,12 +48,34 @@
     <section>
       <h2>Weekly Journal</h2>
 
+      <!-- Week 5 -->
+      <article>
+        <button class="collapsible">Hide Entry</button>
+        <div class="collapsible-content">
+          <h3>Week 5 Entry</h3>
+          <h3>What is the difference between storing data in a JSON file versus browser storage?</h3>
+          <p>
+            JSON files are stored on the server/file system and persist across different browsers and devices when deployed. Browser storage (like localStorage) is local to the user's specific browser and doesn't transfer between devices. JSON files are better for data that needs to be shared or backed up, while browser storage is ideal for user-specific preferences and temporary data.
+          </p>
+
+          <p><strong>How did you use Python to create or update your JSON file?</strong><br>
+          I created a Python script that uses the <code>json</code> module to read and write JSON files. The script takes user input through the command line, creates a reflection object with date and content, appends it to the existing JSON array, and saves it back to the file with proper formatting.</p>
+
+          <p><strong>What does your PWA show locally, and what will users see on GitHub? Are they the same? Why or why not?</strong><br>
+          Locally, the PWA shows actual reflections from the JSON file that I can update using Python. On GitHub Pages, users will only see the initial JSON file content because GitHub serves static files - the Python script doesn't run on their servers. They're different because GitHub Pages doesn't execute backend code.</p>
+
+          <p><strong>What extra feature did you add to your PWA using the JSON file, and why?</strong><br>
+          I added an export button that allows users to download their reflections as a JSON file. This provides data portability - users can backup their reflections, share them with others, or use the data in different applications. It enhances the user experience by giving them control over their data.</p>
+          <button class="copy-entry">📋 Copy Entry</button>
+        </div>
+      </article>
+
       <!-- Week 4 -->
       <article>
         <button class="collapsible">Hide Entry</button>
         <div class="collapsible-content">
           <h3>Week 4 Entry</h3>
-          <h3>What Storage,Browser, and third party APIs did you choose,and why?</h3>
+          <h3>What Storage, Browser, and third party APIs did you choose, and why?</h3>
           <p id="week4-text">
             I used <code>localStorage</code> to save theme preference and journal entry drafts. For the Browser API, I added a Clipboard API button to copy journal entries. For the Third-Party API, I embedded a YouTube video using the YouTube iframe embed method to showcase a tutorial I found helpful.
           </p>
@@ -58,7 +100,7 @@
           I used <code>getElementById</code> to target specific elements like the theme toggle and live date, and <code>querySelectorAll</code> to select multiple collapsible buttons and nav links. These methods gave me precise control over the page structure and allowed me to apply interactivity efficiently.</p>
 
           <p><strong>What was the most challenging part about linking JavaScript with your HTML?</strong><br>
-          The trickiest part was replacing the static navigation with a reusable one injected via JavaScript. I had to make sure the active link was highlighted correctly and that the layout didn’t break across pages. Debugging the collapsible sections also took time, especially making sure the toggle button updated its label dynamically.</p>
+          The trickiest part was replacing the static navigation with a reusable one injected via JavaScript. I had to make sure the active link was highlighted correctly and that the layout didn't break across pages. Debugging the collapsible sections also took time, especially making sure the toggle button updated its label dynamically.</p>
 
           <p><strong>How did you test and debug your JavaScript code?</strong><br>
           I used <code>console.log()</code> to trace DOM selections and event triggers. I also refreshed each page after changes to confirm the nav injection, dark mode toggle, and collapsible sections worked consistently. Chrome DevTools helped me inspect elements and tweak styles live. Once everything behaved as expected, I committed the updates to GitHub for version control.</p>
@@ -106,7 +148,7 @@
             <li>PythonAnywhere puts my website online for everyone to see</li>
           </ul>
           <p><strong>The Big Challenge:</strong><br>
-          Each tool had its own problems. The website didn’t want to install, Android Studio kept crashing, and putting the website online was confusing. But I fixed each problem one by one.</p>
+          Each tool had its own problems. The website didn't want to install, Android Studio kept crashing, and putting the website online was confusing. But I fixed each problem one by one.</p>
           <p>Now I understand the difference between making a website that acts like an app versus making a real Android app. It was hard work, but I got everything working in the end!</p>
         </div>
       </article>
@@ -126,5 +168,6 @@
   <script src="js/storage.js"></script>
   <script src="js/browser.js"></script>
   <script src="js/thirdparty.js"></script>
+  <script src="js/jsonhandle.js"></script>
 </body>
 </html>
