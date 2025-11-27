@@ -14,13 +14,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const navContainer = document.getElementById("nav-container");
   if (navContainer) {
     navContainer.innerHTML = navHTML;
-    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+    // --- START: Active Link Logic Update ---
+    // Get the base path of the current page's URL
+    const currentPath = window.location.pathname;
+
     const links = navContainer.querySelectorAll(".nav-links a");
     links.forEach(link => {
-      if (link.getAttribute("href") === currentPage) {
+      const linkHref = link.getAttribute("href");
+
+      // Check if the current URL path ends with the link's href (safer for Flask routing)
+      if (currentPath.endsWith(linkHref)) {
+        link.classList.add("active");
+      }
+
+      // Special case: Highlight 'index.html' if the path is the root (/)
+      if (linkHref === "index.html" && currentPath.endsWith("/")) {
         link.classList.add("active");
       }
     });
+    // --- END: Active Link Logic Update ---
   }
 
   // Live date
