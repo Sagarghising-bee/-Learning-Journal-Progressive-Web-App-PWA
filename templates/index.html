@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learning Journal - Home</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
   <header><div id="nav-container"></div></header>
@@ -14,12 +14,12 @@
     <section>
       <h2>Welcome!</h2>
       <p id="live-date" class="date-display"></p>
-      <p>Hi, I’m Sagar Ghising. This site is my learning journal for Mobile Application Development. 
+      <p>Hi, I’m Sagar Ghising. This site is my learning journal for Mobile Application Development.
          I’ll post weekly reflections, showcase my projects, and share what I’m learning.</p>
     </section>
   </main>
 
   <footer><p>© 2025 My Learning Journal</p></footer>
-  <script src="js/script.js"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
