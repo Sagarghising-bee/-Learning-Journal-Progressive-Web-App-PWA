@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learning Journal - Projects</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
   <header><div id="nav-container"></div></header>
@@ -17,11 +17,39 @@
       <p>This page showcases my mobile and web development projects from the FGCT6021 unit.</p>
     </section>
 
-    <!-- Week 5 Project -->
+        <section class="project">
+      <h3>Week 6: Full Flask Backend & PWA Deployment</h3>
+      <p>
+        <a href="https://ghisingsagar.pythonanywhere.com/" target="_blank">🌐 Live Demo</a><br>
+        <a href="https://github.com/Sagarghising-bee/-Learning-Journal-Progressive-Web-App-PWA" target="_blank">📦 GitHub Repo</a><br>
+        This week focuses on fully integrating the server-side logic and deployment, demonstrating the PWA deployed on a live server environment:
+        <ul>
+          <li><strong>Flask Backend:</strong> Python server handles all data operations (GET, POST, DELETE).</li>
+          <li><strong>Full CRUD Operations:</strong> Implemented Create, Read, and Delete (CRUD) operations on reflections.</li>
+          <li><strong>Server-Side Persistence:</strong> Reflections are stored and updated dynamically in <code>reflections.json</code> on the server's file system.</li>
+          <li><strong>PWA Communication:</strong> JavaScript Fetch API communicates with Flask API endpoints (e.g., <code>/api/reflections</code>).</li>
+          <li><strong>Deployment:</strong> Successfully deployed and tested the entire application environment on PythonAnywhere.</li>
+          <li><strong>Static File Handling:</strong> Implemented Flask's <code>url_for()</code> function to correctly serve all CSS/JS assets.</li>
+        </ul>
+      </p>
+      <div class="project-features">
+        <strong>Key Features:</strong>
+        <div class="feature-tags">
+          <span class="feature-tag">Flask</span>
+          <span class="feature-tag">Python</span>
+          <span class="feature-tag">Backend API</span>
+          <span class="feature-tag">CRUD</span>
+          <span class="feature-tag">PythonAnywhere</span>
+          <span class="feature-tag">Fetch API</span>
+        </div>
+      </div>
+    </section>
+
+
     <section class="project">
       <h3>Week 5: Python & JSON Backend Integration</h3>
       <p>
-        <a href="https://sagarghising-bee.github.io/-Learning-Journal-Progressive-Web-App-PWA/" target="_blank">🌐 Live Demo</a><br>
+        <a href="https://ghisingsagar.pythonanywhere.com/" target="_blank">🌐 Live Demo</a><br>
         <a href="https://github.com/Sagarghising-bee/-Learning-Journal-Progressive-Web-App-PWA" target="_blank">📦 GitHub Repo</a><br>
         This update includes Python backend integration with JSON file storage:
         <ul>
@@ -44,11 +72,10 @@
       </div>
     </section>
 
-    <!-- Week 4 Project -->
     <section class="project">
       <h3>Week 4: API Integration</h3>
       <p>
-        <a href="https://sagarghising-bee.github.io/-Learning-Journal-Progressive-Web-App-PWA/" target="_blank">🌐 Live Demo</a><br>
+        <a href="https://ghisingsagar.pythonanywhere.com/" target="_blank">🌐 Live Demo</a><br>
         <a href="https://github.com/Sagarghising-bee/-Learning-Journal-Progressive-Web-App-PWA" target="_blank">📦 GitHub Repo</a><br>
         This update includes comprehensive API integration:
         <ul>
@@ -70,11 +97,10 @@
       </div>
     </section>
 
-    <!-- Week 3 Project -->
     <section class="project">
       <h3>Week 3: DOM Interactivity & Reusable Navigation</h3>
       <p>
-        <a href="https://sagarghising-bee.github.io/-Learning-Journal-Progressive-Web-App-PWA/" target="_blank">🌐 Live Demo</a><br>
+        <a href="https://ghisingsagar.pythonanywhere.com/" target="_blank">🌐 Live Demo</a><br>
         <a href="https://github.com/Sagarghising-bee/-Learning-Journal-Progressive-Web-App-PWA" target="_blank">📦 GitHub Repo</a><br>
         This update focuses on JavaScript DOM manipulation and interactive features:
         <ul>
@@ -97,11 +123,10 @@
       </div>
     </section>
 
-    <!-- Week 2 Project -->
     <section class="project">
       <h3>Week 2: Learning Journal Layout</h3>
       <p>
-        <a href="https://sagarghising-bee.github.io/-Learning-Journal-Progressive-Web-App-PWA/" target="_blank">🌐 Live Demo</a><br>
+        <a href="https://ghisingsagar.pythonanywhere.com/" target="_blank">🌐 Live Demo</a><br>
         <a href="https://github.com/Sagarghising-bee/-Learning-Journal-Progressive-Web-App-PWA" target="_blank">📦 GitHub Repo</a><br>
         This version established the foundation with responsive design and proper structure:
         <ul>
@@ -124,7 +149,6 @@
       </div>
     </section>
 
-    <!-- Week 1 Project -->
     <section class="project">
       <h3>Week 1: Temperature Converter</h3>
       <p>
@@ -154,6 +178,6 @@
   </main>
 
   <footer><p>© 2025 My Learning Journal</p></footer>
-  <script src="js/script.js"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
