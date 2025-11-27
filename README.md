@@ -36,17 +36,22 @@ This journal was developed across several weeks, showcasing incremental learning
 
 The structure adheres to Flask conventions, ensuring all static assets and templates are correctly linked and served by the Python backend.
 ```
-/mysite
-├── flask_app.py        # Python Flask application, handles all routes and API logic
-├── reflections.json    # Dynamic data file (managed by Flask)
+/mysite/
+├── flask_app.py                      # (Python Backend Logic)
 ├── /templates/
-│   ├── index.html
-│   ├── journal.html    # Contains Flask-API forms and entries
-│   └── ...
+│   ├── index.html                    # (Home Page - New Root)
+│   ├── journal.html                  # (Journal Page - Flask API Integration)
+│   ├── projects.html                 # (Projects Page)
+│   └── about.html                    # (About Page)
 └── /static/
-├── /css/
-├── /js/            # Includes script.js, backend.js (Fetch API logic), storage.js, etc.
-└── /backend/
+    ├── /css/
+    │   └── style.css                 # (Stylesheets - UPDATED for DELETE button)
+    └── /js/
+        ├── script.js                 # (Main DOM/Nav/Theme Logic - UPDATED for Flask routing)
+        ├── storage.js                # (Local Storage API)
+        ├── browser.js                # (Clipboard API)
+        ├── thirdparty.js             # (YouTube Embed)
+        └── backend.js                # (Flask API Logic - GET, POST, DELETE)
 
 ```
 ***
