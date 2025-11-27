@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learning Journal - Journal</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
   <header><div id="nav-container"></div></header>
@@ -12,43 +12,75 @@
   <main class="content">
     <button id="theme-toggle" class="theme-btn">🌙 Toggle Dark Mode</button>
 
-    <!-- JSON Backend Section -->
     <section>
-      <h2>JSON Backend Reflections</h2>
-      <p>Reflections stored in JSON file using Python:</p>
-      
-      <!-- Export button will be inserted here by JavaScript -->
+      <h2>Write a Server-Backed Journal Entry</h2>
+      <p>These entries are stored permanently on the Flask backend in <code>reflections.json</code>.</p>
+      <form id="server-entry-form">
+        <textarea id="reflection-text" rows="5" placeholder="Write your entry for the Flask server..."></textarea><br>
+        <button type="submit">💾 Save to Server</button>
+      </form>
+
+      <h3>Reflections from Flask Server</h3>
       <div id="json-reflections-container">
-        <p>Loading reflections...</p>
+        <p>Loading reflections from Flask...</p>
       </div>
-      
+
       <div class="python-info">
-        <h3>How to use:</h3>
+        <h3>How this works (Frontend --&gt; Backend):</h3>
         <ol>
-          <li>Run: <code>python backend/save_entry.py</code> to add reflections</li>
-          <li>Click "Export" button to download your reflections as JSON</li>
-          <li>Refresh page to see new reflections</li>
+          <li>You submit the form -> <code>backend.js</code> sends a <strong>POST</strong> request to <code>/api/reflections</code>.</li>
+          <li>Flask handles the POST request, saves the data to <code>reflections.json</code>, and returns a 201 status.</li>
+          <li>The page is updated by sending a <strong>GET</strong> request to <code>/api/reflections</code>.</li>
+          <li>The <strong>Delete</strong> button uses a <strong>DELETE</strong> request to <code>/api/reflections/&lt;index&gt;</code> to remove entries.</li>
         </ol>
       </div>
     </section>
 
-    <!-- Storage API: Journal Entry Form -->
     <section>
-      <h2>Write a Journal Entry</h2>
+      <h2>Write a Local Draft (Client-Only)</h2>
       <form id="entry-form">
-        <textarea id="entry-text" rows="5" placeholder="Write your journal entry..."></textarea><br>
-        <button type="submit">💾 Save Entry</button>
+        <textarea id="entry-text" rows="5" placeholder="Local draft saved using localStorage (only visible in this browser)..."></textarea><br>
+        <button type="submit">💾 Save Local Draft</button>
       </form>
 
-      <h3>Saved Entries</h3>
+      <h3>Saved Local Entries</h3>
       <ul id="entry-list" style="list-style: none; padding-left: 0;"></ul>
     </section>
 
-    <!-- Weekly Journal Entries -->
     <section>
       <h2>Weekly Journal</h2>
 
-      <!-- Week 5 -->
+            <article>
+        <button class="collapsible">Hide Entry</button>
+        <div class="collapsible-content">
+          <h3>Week 6 Entry: Frontend & Backend Integration (Flask)</h3>
+
+          <p><strong>1. Why is the frontend-backend connection important?</strong><br>
+          The frontend-backend connection is crucial because it allows the Progressive Web App (PWA) to move beyond being a static interface and become a fully functional application capable of processing and storing user data. The frontend handles the visual display and user interaction, while the backend (Flask) handles the **persistence of data**, security, and business logic, which are essential for any scalable application.</p>
+
+          <p><strong>2. Which HTTP methods did you use in Flask, and why?</strong><br>
+          I used three primary HTTP methods:
+          <ul>
+            <li><strong>GET</strong>: Used for the <code>/api/reflections</code> route to retrieve reflections from the `reflections.json` file and send them to the frontend for display.</li>
+            <li><strong>POST</strong>: Used for the <code>/api/reflections</code> route when submitting a new reflection from the form. This method creates a new entry and saves it to the JSON file.</li>
+            <li><strong>DELETE</strong>: Used for the extra feature route <code>/api/reflections/&lt;index&gt;</code> to remove a specific reflection from the JSON file based on its index. This method ensures data can be managed server-side.</li>
+          </ul>
+          </p>
+
+          <p><strong>3. What is the difference between using Flask to store and load JSON data and reading JSON directly in the browser?</strong><br>
+          When reading JSON directly in the browser, the data is static (like an asset file). Any changes made by the user are only saved locally (via `localStorage`) or lost upon refresh, and the central JSON file cannot be updated. Using Flask (backend) is fundamentally different: Flask executes the Python script, allowing it to write back and permanently update the `reflections.json` file on the server's file system, ensuring persistence and shared data across different users and devices.</p>
+
+          <p><strong>4. Did you face any difficulties when running your project on PythonAnywhere? How did you handle them?</strong><br>
+          The main difficulty was handling the file paths for saving `reflections.json`. Initially, Flask tried to save the file next to `flask_app.py`. To fix this, I updated the path in my Python script to `static/backend/reflections.json` and ensured the `static/backend/` folders existed on PythonAnywhere. I also had to remember to Reload the web app every time I updated the Python code to ensure the server used the new paths and routes.</p>
+
+          <p><strong>5. What extra feature did you build into your PWA with Flask, and why did you add it?</strong><br>
+          I built a Delete Reflection feature using the DELETE HTTP method. I added this feature because it gives the user full CRUD (Create, Read, Update, Delete) control over their data, which is essential for a complete journal application. It demonstrates proficiency in handling server requests beyond simple data retrieval and submission.</p>
+
+          <button class="copy-entry">📋 Copy Entry</button>
+        </div>
+      </article>
+
+
       <article>
         <button class="collapsible">Hide Entry</button>
         <div class="collapsible-content">
@@ -70,7 +102,6 @@
         </div>
       </article>
 
-      <!-- Week 4 -->
       <article>
         <button class="collapsible">Hide Entry</button>
         <div class="collapsible-content">
@@ -91,7 +122,6 @@
         </div>
       </article>
 
-      <!-- Week 3 -->
       <article>
         <button class="collapsible">Hide Entry</button>
         <div class="collapsible-content">
@@ -100,9 +130,73 @@
           I used <code>getElementById</code> to target specific elements like the theme toggle and live date, and <code>querySelectorAll</code> to select multiple collapsible buttons and nav links. These methods gave me precise control over the page structure and allowed me to apply interactivity efficiently.</p>
 
           <p><strong>What was the most challenging part about linking JavaScript with your HTML?</strong><br>
-          The trickiest part was replacing the static navigation with a reusable one injected via JavaScript. I had to make sure the active link was highlighted correctly and that the layout didn't break across pages. Debugging the collapsible sections also took time, especially making sure the toggle button updated its label dynamically.</p>
+          The trickiest part was replacing the static navigation with a reusable one injected via JavaScript. I had to make sure the active link was highlighted correctly and that the layout didn't break across pages. Debugbing the collapsible sections also took time, especially making sure the toggle button updated its label dynamically.</p>
 
           <p><strong>How did you test and debug your JavaScript code?</strong><br>
+          I used <code>console.log()</code> to trace DOM selections and event triggers. I also refreshed each page after changes to confirm the nav injection, dark mode toggle, and collapsible sections worked consistently. Chrome DevTools helped me inspect elements and tweak styles live. Once everything behaved as expected, I committed the updates to GitHub for version control.</p>
+
+          <p><strong>What did you learn?</strong><br>
+          I learned how powerful the DOM is for building reusable and interactive components. Injecting navigation, toggling themes, and collapsing content all helped me understand how JavaScript can control both structure and style dynamically. It made my Learning Journal feel like a real app!</p>
+        </div>
+      </article>
+
+      <article>
+        <button class="collapsible">Hide Entry</button>
+        <div class="collapsible-content">
+          <h3>Week 2 Entry</h3>
+          <p><strong>How did you approach mobile-first design?</strong><br>
+          I started by designing for small screens first, using flexible layouts and percentages instead of fixed widths.
+          Then I added media queries to adjust the spacing and layout for larger devices.</p>
+
+          <p><strong>Most useful HTML/CSS concept?</strong><br>
+          Using Flexbox helped me organize my navigation and page structure easily while keeping it responsive.</p>
+
+          <p><strong>Most challenging part?</strong><br>
+          The hardest part was fixing layout issues on mobile view, especially when content or padding caused the page to scroll sideways.
+          I learned how to use <code>overflow-x: hidden</code> and flexible widths to make everything fit properly.</p>
+        </div>
+      </article>
+
+      <article>
+        <button class="collapsible">Hide Entry</button>
+        <div class="collapsible-content">
+          <h3>Week 1 Entry</h3>
+          <h3>Reflection</h3>
+          <p>This was my first time building mobile apps, and I learned a lot!</p>
+          <p>I made the same Temperature Converter app two different ways:</p>
+          <ul>
+            <li><strong>As a Website (PWA):</strong> Works in any browser and can be installed like an app.</li>
+            <li><strong>As a Native Android App:</strong> A real app installed from Android Studio.</li>
+          </ul>
+          <p><strong>What I Learned:</strong></p>
+          <ul>
+            <li>GitHub is like a "save button" for code</li>
+            <li>VS Code is where I write my website code</li>
+            <li>Android Studio is for making Android apps (but it's slow!)</li>
+            <li>PythonAnywhere puts my website online for everyone to see</li>
+          </ul>
+          <p><strong>The Big Challenge:</strong><br>
+          Each tool had its own problems. The website didn't want to install, Android Studio kept crashing, and putting the website online was confusing. But I fixed each problem one by one.</p>
+          <p>Now I understand the difference between making a website that acts like an app versus making a real Android app. It was hard work, but I got everything working in the end!</p>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <h2>Helpful Tutorial</h2>
+      <div id="youtube-video"></div>
+    </section>
+  </main>
+
+  <footer><p>© 2025 My Learning Journal</p></footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/storage.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/browser.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/thirdparty.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/backend.js') }}"></script>
+</body>
+</html>
           I used <code>console.log()</code> to trace DOM selections and event triggers. I also refreshed each page after changes to confirm the nav injection, dark mode toggle, and collapsible sections worked consistently. Chrome DevTools helped me inspect elements and tweak styles live. Once everything behaved as expected, I committed the updates to GitHub for version control.</p>
 
           <p><strong>What did you learn?</strong><br>
