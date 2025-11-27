@@ -140,7 +140,8 @@ body.dark-mode footer {
 }
 
 /* JOURNAL ENTRY FORM */
-#entry-form textarea {
+#entry-form textarea,
+#server-entry-form textarea { /* Added server form styling */
   width: 100%;
   padding: 10px;
   font-size: 1rem;
@@ -149,7 +150,8 @@ body.dark-mode footer {
   border-radius: 5px;
 }
 
-#entry-form button {
+#entry-form button,
+#server-entry-form button { /* Added server form styling */
   background-color: #0077cc;
   color: white;
   border: none;
@@ -189,57 +191,9 @@ body.dark-mode footer {
   margin-top: 10px;
 }
 
-/* ========== JSON BACKEND STYLES ========== */
+/* ========== JSON BACKEND STYLES / FLASK REFLECTIONS ========== */
 
-/* BEAUTIFUL EXPORT BUTTON STYLES */
-.export-btn {
-  background: linear-gradient(135deg, #28a745, #20c997);
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin: 20px 0;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 200px;
-  justify-content: center;
-}
-
-.export-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
-  background: linear-gradient(135deg, #218838, #1ea085);
-}
-
-.export-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 10px rgba(40, 167, 69, 0.3);
-}
-
-.export-btn.export-success {
-  background: linear-gradient(135deg, #20c997, #198754);
-  box-shadow: 0 4px 15px rgba(32, 201, 151, 0.4);
-}
-
-.export-icon {
-  font-size: 1.2rem;
-}
-
-.export-text {
-  font-weight: 600;
-}
-
-.export-format {
-  font-size: 0.8rem;
-  opacity: 0.9;
-  font-weight: normal;
-}
+/* Removed static .export-btn styles as they are no longer functional with static JSON */
 
 /* Enhanced Reflection Items */
 .reflection-item {
@@ -277,6 +231,24 @@ body.dark-mode footer {
   color: #333;
   font-size: 1rem;
 }
+
+/* Styling for the new Delete Button in Flask Reflections */
+.reflection-header .delete-flask-entry {
+  background-color: #dc3545; /* Red color */
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-left: 10px;
+  transition: background-color 0.2s;
+}
+
+.reflection-header .delete-flask-entry:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
 
 .no-reflections {
   text-align: center;
@@ -395,14 +367,14 @@ body.dark-mode footer {
 
 /* ========== DARK MODE ENHANCEMENTS ========== */
 
-body.dark-mode .export-btn {
-  background: linear-gradient(135deg, #2d7d46, #1a5d46);
-  box-shadow: 0 4px 15px rgba(45, 125, 70, 0.4);
+/* Dark Mode Delete Button */
+body.dark-mode .reflection-header .delete-flask-entry {
+  background-color: #e57373;
+  color: #121212;
 }
 
-body.dark-mode .export-btn:hover {
-  background: linear-gradient(135deg, #276c3d, #164d3a);
-  box-shadow: 0 6px 20px rgba(45, 125, 70, 0.5);
+body.dark-mode .reflection-header .delete-flask-entry:hover {
+  background-color: #ef5350;
 }
 
 body.dark-mode .reflection-item {
@@ -500,31 +472,26 @@ body.dark-mode .project a:hover {
     flex-direction: column;
     gap: 5px;
   }
-  
+
   .nav-links a {
     display: block;
     text-align: center;
   }
-  
+
   .content {
     padding: 15px;
   }
-  
-  .export-btn {
-    width: 100%;
-    margin: 15px 0;
-  }
-  
+
   .reflection-item {
     padding: 12px;
     margin: 12px 0;
   }
-  
+
   .project {
     padding: 15px;
     margin-bottom: 20px;
   }
-  
+
   .project h3 {
     font-size: 1.2rem;
   }
