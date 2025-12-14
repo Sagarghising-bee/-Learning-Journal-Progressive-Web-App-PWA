@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learning Journal - Projects</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0077cc">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
@@ -15,6 +17,31 @@
     <section>
       <h2>My Projects</h2>
       <p>This page showcases my mobile and web development projects from the FGCT6021 unit.</p>
+    </section>
+        <section class="project">
+      <h3>Week 7: PWA Transformation & Offline Mode</h3>
+      <p>
+        <a href="https://ghisingsagar.pythonanywhere.com/" target="_blank">🌐 Live Demo</a><br>
+        <a href="https://github.com/Sagarghising-bee/-Learning-Journal-Progressive-Web-App-PWA" target="_blank">📦 GitHub Repo</a><br>
+        This week transformed the standard Flask website into a fully functional Progressive Web App (PWA) that works offline and can be installed on devices:
+        <ul>
+          <li><strong>Web Manifest:</strong> Created <code>manifest.json</code> to enable "Add to Home Screen" functionality with custom icons and theme colors.</li>
+          <li><strong>Service Worker:</strong> Implemented <code>sw.js</code> to cache the "App Shell" (HTML, CSS, JS) and handle network requests.</li>
+          <li><strong>Offline Capability:</strong> The app now loads instantly even without internet by serving cached assets via the Fetch API.</li>
+          <li><strong>Flask PWA Routing:</strong> Updated <code>flask_app.py</code> to serve the Service Worker from the root scope (`/sw.js`) to control the entire application.</li>
+          <li><strong>Extra Feature (Offline Alert):</strong> Added a real-time JavaScript notification system that detects network loss and warns the user when they are offline.</li>
+        </ul>
+      </p>
+      <div class="project-features">
+        <strong>Key Features:</strong>
+        <div class="feature-tags">
+          <span class="feature-tag">Service Worker</span>
+          <span class="feature-tag">Web Manifest</span>
+          <span class="feature-tag">Offline Caching</span>
+          <span class="feature-tag">Installable</span>
+          <span class="feature-tag">Network Detection</span>
+        </div>
+      </div>
     </section>
 
         <section class="project">
