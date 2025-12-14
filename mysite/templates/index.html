@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learning Journal - Home</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0077cc">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
@@ -12,6 +14,9 @@
   <main class="content">
     <button id="theme-toggle" class="theme-btn">🌙 Toggle Dark Mode</button>
     <section>
+        <button id="install-btn" style="display: none; background-color: #0077cc; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; margin: 15px 0;">
+    📲 Install App to Home Screen
+  </button>
       <h2>Welcome!</h2>
       <p id="live-date" class="date-display"></p>
       <p>Hi, I’m Sagar Ghising. This site is my learning journal for Mobile Application Development.
@@ -23,3 +28,4 @@
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
+
