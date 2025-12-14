@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learning Journal - Journal</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0077cc">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
@@ -53,10 +55,32 @@
             <article>
         <button class="collapsible">Hide Entry</button>
         <div class="collapsible-content">
+          <h3>Week 7 Entry: PWA & Offline Capabilities</h3>
+
+          <p><strong>1. Why is it useful to enhance your Flask app with PWA features?</strong><br>
+          Enhancing a Flask app with PWA features transforms it from a simple website into a <strong>reliable, native-like application</strong>. By adding a Web Manifest, users can install the journal to their home screen, making it accessible with a single tap. By adding a Service Worker, the app becomes resilient to network failures, allowing users to read their past entries even when they have no internet connection. This improves the overall user experience and performance.</p>
+
+          <p><strong>2. What did you use to support offline access and dynamic data?</strong><br>
+          To support offline access, I implemented a <strong>Service Worker (`sw.js`)</strong>. I configured it to cache essential shell files (HTML, CSS, JS) and the `manifest.json` during the `install` phase. For dynamic data, I updated the <strong>Flask backend (`flask_app.py`)</strong> to serve the Service Worker file from the root URL (`/sw.js`) instead of the static folder. I also used the <strong>Fetch API</strong> in the Service Worker to intercept network requests: if the network fails, it serves the cached versions of my pages instead of showing an error.</p>
+
+          <p><strong>3. What extra feature did you add, and why?</strong><br>
+          I added a <strong>Real-Time Offline Notification System</strong>. Since my app relies on a server database (`reflections.json`) to save new entries, users need to know if they are offline before they try to submit a form. I used JavaScript's `window.addEventListener` for 'offline' and 'online' events to detect connectivity changes instantly. When the internet disconnects, a banner appears warning the user they are in "Offline Mode". This improves usability by preventing user frustration.</p>
+
+          <p><strong>4. Did you face any challenges deploying your PWA, and how did you solve them?</strong><br>
+          Yes, I faced two main challenges. First, my Service Worker initially couldn't cache the main HTML pages because it was located in `/static/js/`, restricting its scope. I solved this by creating a specific route in Flask (`@app.route('/sw.js')`) to serve the file from the root URL. Second, the "Install App" button wouldn't appear because the browser couldn't find my icons due to a relative path error. Updating the paths in `manifest.json` to absolute paths (`/static/images/...`) fixed the issue.</p>
+
+          <button class="copy-entry">📋 Copy Entry</button>
+        </div>
+      </article>
+
+
+            <article>
+        <button class="collapsible">Hide Entry</button>
+        <div class="collapsible-content">
           <h3>Week 6 Entry: Frontend & Backend Integration (Flask)</h3>
 
           <p><strong>1. Why is the frontend-backend connection important?</strong><br>
-          The frontend-backend connection is crucial because it allows the Progressive Web App (PWA) to move beyond being a static interface and become a fully functional application capable of processing and storing user data. The frontend handles the visual display and user interaction, while the backend (Flask) handles the **persistence of data**, security, and business logic, which are essential for any scalable application.</p>
+          The frontend-backend connection is crucial because it allows the Progressive Web App (PWA) to move beyond being a static interface and become a fully functional application capable of processing and storing user data. The frontend handles the visual display and user interaction, while the backend (Flask) handles the persistence of data, security, and business logic, which are essential for any scalable application.</p>
 
           <p><strong>2. Which HTTP methods did you use in Flask, and why?</strong><br>
           I used three primary HTTP methods:
@@ -197,71 +221,4 @@
   <script src="{{ url_for('static', filename='js/backend.js') }}"></script>
 </body>
 </html>
-          I used <code>console.log()</code> to trace DOM selections and event triggers. I also refreshed each page after changes to confirm the nav injection, dark mode toggle, and collapsible sections worked consistently. Chrome DevTools helped me inspect elements and tweak styles live. Once everything behaved as expected, I committed the updates to GitHub for version control.</p>
 
-          <p><strong>What did you learn?</strong><br>
-          I learned how powerful the DOM is for building reusable and interactive components. Injecting navigation, toggling themes, and collapsing content all helped me understand how JavaScript can control both structure and style dynamically. It made my Learning Journal feel like a real app!</p>
-        </div>
-      </article>
-
-      <!-- Week 2 -->
-      <article>
-        <button class="collapsible">Hide Entry</button>
-        <div class="collapsible-content">
-          <h3>Week 2 Entry</h3>
-          <p><strong>How did you approach mobile-first design?</strong><br>
-          I started by designing for small screens first, using flexible layouts and percentages instead of fixed widths. 
-          Then I added media queries to adjust the spacing and layout for larger devices.</p>
-
-          <p><strong>Most useful HTML/CSS concept?</strong><br>
-          Using Flexbox helped me organize my navigation and page structure easily while keeping it responsive.</p>
-
-          <p><strong>Most challenging part?</strong><br>
-          The hardest part was fixing layout issues on mobile view, especially when content or padding caused the page to scroll sideways. 
-          I learned how to use <code>overflow-x: hidden</code> and flexible widths to make everything fit properly.</p>
-        </div>
-      </article>
-
-      <!-- Week 1 -->
-      <article>
-        <button class="collapsible">Hide Entry</button>
-        <div class="collapsible-content">
-          <h3>Week 1 Entry</h3>
-          <h3>Reflection</h3>
-          <p>This was my first time building mobile apps, and I learned a lot!</p>
-          <p>I made the same Temperature Converter app two different ways:</p>
-          <ul>
-            <li><strong>As a Website (PWA):</strong> Works in any browser and can be installed like an app.</li>
-            <li><strong>As a Native Android App:</strong> A real app installed from Android Studio.</li>
-          </ul>
-          <p><strong>What I Learned:</strong></p>
-          <ul>
-            <li>GitHub is like a "save button" for code</li>
-            <li>VS Code is where I write my website code</li>
-            <li>Android Studio is for making Android apps (but it's slow!)</li>
-            <li>PythonAnywhere puts my website online for everyone to see</li>
-          </ul>
-          <p><strong>The Big Challenge:</strong><br>
-          Each tool had its own problems. The website didn't want to install, Android Studio kept crashing, and putting the website online was confusing. But I fixed each problem one by one.</p>
-          <p>Now I understand the difference between making a website that acts like an app versus making a real Android app. It was hard work, but I got everything working in the end!</p>
-        </div>
-      </article>
-    </section>
-
-    <!-- Third-Party API: YouTube Embed -->
-    <section>
-      <h2>Helpful Tutorial</h2>
-      <div id="youtube-video"></div>
-    </section>
-  </main>
-
-  <footer><p>© 2025 My Learning Journal</p></footer>
-
-  <!-- Modular JS files -->
-  <script src="js/script.js"></script>
-  <script src="js/storage.js"></script>
-  <script src="js/browser.js"></script>
-  <script src="js/thirdparty.js"></script>
-  <script src="js/json-handle.js"></script>
-</body>
-</html>
