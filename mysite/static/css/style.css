@@ -526,3 +526,153 @@ body.dark-mode code {
   background-color: #2d3748;
   color: #f78fe7;
 }
+
+/*
+   APP DASHBOARD STYLES (Native Look)
+
+/* Hero Section */
+.app-dashboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #0077cc, #005fa3);
+  color: white;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3);
+  position: relative;
+}
+
+.greeting-box h2 {
+  color: white !important; /* Override default h2 color */
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.date-badge {
+  background: rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  font-style: normal !important;
+  color: #fff !important;
+}
+
+/* Install Button Pill */
+.install-pill-btn {
+  margin-top: 15px;
+  background: white;
+  color: #0077cc;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+/* Mini Theme Toggle (Floating) */
+.theme-btn-mini {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.1);
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* THE DASHBOARD GRID */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns side-by-side */
+  gap: 15px;
+}
+
+.dashboard-card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #f0f0f0;
+}
+
+/* Hover Effects */
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  background-color: #fafafa;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.card-text h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: #0077cc;
+}
+
+.card-text p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+}
+
+/* DARK MODE OVERRIDES */
+body.dark-mode .hero-section {
+  background: linear-gradient(135deg, #1a365d, #0d1f38);
+  box-shadow: none;
+}
+
+body.dark-mode .dashboard-card {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+
+body.dark-mode .card-text h3 {
+  color: #90caf9;
+}
+
+body.dark-mode .card-text p {
+  color: #a0aec0;
+}
+
+body.dark-mode .install-pill-btn {
+  background: #4a5568;
+  color: white;
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 400px) {
+  .dashboard-grid {
+    gap: 10px;
+  }
+  .dashboard-card {
+    padding: 15px;
+  }
+}
+
+    
