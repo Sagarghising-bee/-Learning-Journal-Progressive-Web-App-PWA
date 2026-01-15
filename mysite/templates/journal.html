@@ -52,6 +52,39 @@
     <section>
       <h2>Weekly Journal</h2>
 
+          <!-- MINI PROJECT -->
+      <article>
+        <button class="collapsible">Hide Entry</button>
+        <div class="collapsible-content">
+          <h3>Week 8 Entry: Mini Project Reflection</h3>
+
+          <p><strong>1. What additional features did you add to your Learning Journal?</strong><br>
+          For my Mini Project, I expanded the application's functionality by introducing a <strong>Creative Zone</strong> and a comprehensive <strong>Dashboard UI overhaul</strong>. The Creative Zone is built using the HTML5 <strong>Canvas API</strong>, which provides a 2D drawing context for freehand sketching. Unlike standard text entries, this allows for visual brainstorming. I implemented a JavaScript controller in <code>creative.js</code> to handle the drawing logic.
+          <br><code>// creative.js: Initializing 2D Context<br>const ctx = canvas.getContext("2d");<br>ctx.lineWidth = 3;<br>ctx.lineCap = "round";</code><br>
+          The feature includes a clear-canvas tool and a download function that converts the canvas into a PNG using <code>toDataURL()</code>. Additionally, I completely redesigned the Homepage (<code>index.html</code>) to function as an app dashboard. I moved away from simple text links to a <strong>CSS Grid system</strong> featuring large, tappable cards. 
+          <br><code>/* style.css: Dashboard Grid */<br>.dashboard-grid {<br>  display: grid;<br>  grid-template-columns: 1fr 1fr;<br>  gap: 15px;<br>}</code><br>
+          This redesign was supported by a dynamic JavaScript greeting system that detects the user's local time to display "Good Morning" or "Good Evening," significantly improving the personalized feel of the app.</p>
+
+          <p><strong>2. Why did you choose your mini project idea?</strong><br>
+          I chose to build the <strong>Creative Zone</strong> and the <strong>Dashboard UI</strong> because I wanted to challenge the perception of a "journal" as a purely static, text-heavy platform. In mobile development, user engagement is paramount, and adding a tactile, interactive element like a drawing pad makes the application feel like a professional tool rather than a standard webpage. I specifically wanted to master the <strong>HTML5 Canvas API</strong> because it is a fundamental technology for graphics and data visualization. By building a sketchpad from scratch, I gained a deeper understanding of how browsers handle raw pixel data and complex event listeners. 
+          <br><code>// index.html: Hero Greeting Logic<br>const hour = new Date().getHours();<br>if (hour < 12) greetingEl.innerHTML = "Good Morning! ☀️";</code><br>
+          The Dashboard redesign was chosen to fulfill the core philosophy of a <strong>Progressive Web App (PWA)</strong>. A PWA should not just work offline; it should mimic the visual hierarchy and ease of use found in native iOS or Android applications. By implementing a grid-based card layout, I prioritized the user experience for mobile users, ensuring that navigation is intuitive and accessible for thumb-based interaction on handheld devices, which is a key requirement for modern mobile-first development.</p>
+
+          <p><strong>3. What technical challenges did you face and how did you solve them?</strong><br>
+          The most significant challenge was handling the <strong>input disparity between Desktop and Mobile devices</strong>. My initial code relied on mouse events like <code>mousedown</code> and <code>mousemove</code>, which do not trigger on touchscreens. To solve this, I had to implement parallel <strong>Touch Event Listeners</strong> (<code>touchstart</code> and <code>touchmove</code>).
+          <br><code>// creative.js: Mobile Touch Support<br>canvas.addEventListener("touchstart", (e) => {<br>  e.preventDefault(); // Prevents page scrolling<br>  const pos = getTouchPos(canvas, e);<br>  ctx.beginPath();<br>  ctx.moveTo(pos.x, pos.y);<br>});</code><br>
+          A major hurdle was that dragging a finger on the canvas would scroll the entire browser page. I solved this by calling <code>e.preventDefault()</code> within the touch listeners and applying <code>touch-action: none</code> in the CSS. Another challenge was coordinate mapping; since touch coordinates are relative to the viewport, I wrote a custom helper function <code>getTouchPos</code> that uses <code>getBoundingClientRect()</code> to calculate the exact position relative to the canvas. This ensured that the "ink" appeared exactly where the user touched the screen, regardless of the zoom level or page scroll position.</p>
+
+          <p><strong>4. What would you improve if given more time?</strong><br>
+          If granted more time, my first priority would be to implement <strong>Server-Side Image Storage</strong>. Currently, drawings are only available for local download. I would upgrade the Flask backend to accept <code>Base64</code> strings from the canvas and store them in the server’s file system. 
+          <br><code># flask_app.py: Conceptual Route for Image Saving<br>@app.route("/api/save-sketch", methods=["POST"])<br>def save_sketch():<br>    image_data = request.json['image'] # Base64 string<br>    # Logic to decode and save as .png...</code><br>
+          Secondly, I would migrate the data persistence layer from the current JSON file to a robust <strong>SQLite Database</strong> using SQLAlchemy. While <code>reflections.json</code> is great for a prototype, a relational database would prevent data corruption during simultaneous user requests and allow for advanced features like searching through entries or tagging sketches by category. Finally, I would enhance the <strong>Creative Zone</strong> by adding a full tool suite, including a color picker, variable brush sizes, and an "Undo" feature using a stack to store previous canvas states. These improvements would transition the application from a student project into a fully-featured productivity tool suitable for professional use.</p>
+
+          <button class="copy-entry">📋 Copy Entry</button>
+        </div>
+      </article>
+      
+
             <article>
         <button class="collapsible">Hide Entry</button>
         <div class="collapsible-content">
