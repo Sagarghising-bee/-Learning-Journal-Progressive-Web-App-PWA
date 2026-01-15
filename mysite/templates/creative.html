@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Journal - Creative Zone</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0077cc">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <style>
+    /* Specific styles for the canvas */
+    .canvas-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+    canvas {
+      border: 2px solid #0077cc;
+      border-radius: 8px;
+      background-color: white;
+      cursor: crosshair;
+      touch-action: none; /* Prevents scrolling while drawing on mobile */
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .controls {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+    }
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn-clear { background-color: #dc3545; }
+    .btn-download { background-color: #28a745; }
+  </style>
+</head>
+<body>
+  <header><div id="nav-container"></div></header>
+
+  <main class="content">
+    <button id="theme-toggle" class="theme-btn">🌙 Toggle Dark Mode</button>
+
+    <section>
+      <h2>🎨 Creative Zone</h2>
+      <p>Use this canvas to sketch diagrams, wireframes, or just doodle your thoughts. You can download your creation when you're done!</p>
+
+      <div class="canvas-container">
+        <canvas id="drawing-board" width="350" height="400"></canvas>
+
+        <div class="controls">
+          <button id="clear-btn" class="btn btn-clear">🗑️ Clear</button>
+          <button id="download-btn" class="btn btn-download">💾 Download</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>© 2025 My Learning Journal</p></footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/creative.js') }}"></script>
+</body>
+</html>
+
