@@ -55,6 +55,11 @@ def projects_page():
 def about_page():
     return render_template("about.html")
 
+@app.route("/creative.html")
+def creative_page():
+    return render_template("creative.html")
+
+
 # --- API ROUTES ---
 
 @app.route("/api/reflections", methods=["GET"])
@@ -81,4 +86,4 @@ def delete_reflection(index):
         save_reflections(reflections)
         return jsonify({"message": "Deleted", "deleted": deleted}), 200
     return jsonify({"error": "Not found"}), 404
-
+    
