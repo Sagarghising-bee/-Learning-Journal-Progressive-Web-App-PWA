@@ -11,21 +11,67 @@
 <body>
   <header><div id="nav-container"></div></header>
 
-  <main class="content">
+  <main class="content app-dashboard">
+
     <button id="theme-toggle" class="theme-btn">🌙 Toggle Dark Mode</button>
-    <section>
-        <button id="install-btn" style="display: none; background-color: #0077cc; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; margin: 15px 0;">
-    📲 Install App to Home Screen
-  </button>
-      <h2>Welcome!</h2>
-      <p id="live-date" class="date-display"></p>
-      <p>Hi, I’m Sagar Ghising. This site is my learning journal for Mobile Application Development.
-         I’ll post weekly reflections, showcase my projects, and share what I’m learning.</p>
+
+    <section class="hero-section">
+      <div class="greeting-box">
+        <h2 id="dynamic-greeting">Hello, Sagar! 👋</h2>
+        <p id="live-date" class="date-badge">Loading date...</p>
+      </div>
+
+      <button id="install-btn" class="install-pill-btn" style="display: none;">
+        📲 Install App
+      </button>
     </section>
+
+    <div class="dashboard-grid">
+
+      <a href="journal.html" class="dashboard-card card-journal">
+        <div class="card-icon">📖</div>
+        <div class="card-text">
+          <h3>Journal</h3>
+          <p>Read & Write</p>
+        </div>
+      </a>
+
+      <a href="creative.html" class="dashboard-card card-creative">
+        <div class="card-icon">🎨</div>
+        <div class="card-text">
+          <h3>Creative</h3>
+          <p>Sketch & Draw</p>
+        </div>
+      </a>
+
+      <a href="projects.html" class="dashboard-card card-projects">
+        <div class="card-icon">🚀</div>
+        <div class="card-text">
+          <h3>Projects</h3>
+          <p>My Work</p>
+        </div>
+      </a>
+
+      <a href="about.html" class="dashboard-card card-about">
+        <div class="card-icon">👤</div>
+        <div class="card-text">
+          <h3>Profile</h3>
+          <p>About Me</p>
+        </div>
+      </a>
+
+    </div>
   </main>
 
   <footer><p>© 2025 My Learning Journal</p></footer>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+  <script>
+    const hour = new Date().getHours();
+    const greetingEl = document.getElementById('dynamic-greeting');
+    if (hour < 12) greetingEl.innerHTML = "Good Morning! ☀️";
+    else if (hour < 18) greetingEl.innerHTML = "Good Afternoon! 🌤️";
+    else greetingEl.innerHTML = "Good Evening! 🌙";
+  </script>
 </body>
 </html>
-
