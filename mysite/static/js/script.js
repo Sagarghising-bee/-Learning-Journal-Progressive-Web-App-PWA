@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <li><a href="index.html">Home</a></li>
           <li><a href="journal.html">Journal</a></li>
           <li><a href="projects.html">Projects</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="creative.html">Creative Zone</a></li> <li><a href="about.html">About</a></li>
         </ul>
       </nav>
     `;
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", () => {
       const content = btn.nextElementSibling; // The div immediately after the button
       content.classList.toggle("collapsed");
-      
+
       // Update button text
       if (content.classList.contains("collapsed")) {
         btn.textContent = "Show Entry";
@@ -117,4 +117,3 @@ if (installBtn) {
     }
   });
 }
-
