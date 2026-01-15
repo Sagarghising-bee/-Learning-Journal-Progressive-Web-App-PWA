@@ -1,7 +1,6 @@
-const CACHE_NAME = 'journal-debug-v1';
+const CACHE_NAME = 'journal-debug-v3';
 
-// 1. Only cache the ABSOLUTE ESSENTIALS first to ensure it works.
-// We can add the JS/CSS files back once HTML is working.
+// 1. Only essential assets
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -70,4 +69,3 @@ self.addEventListener('fetch', (event) => {
       })
   );
 });
-
