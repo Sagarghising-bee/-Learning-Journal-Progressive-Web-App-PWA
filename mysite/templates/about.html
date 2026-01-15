@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,17 +7,135 @@
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#0077cc">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <style>
+    /* Profile Specific Styles (Embedded for easy setup) */
+    .profile-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .avatar-circle {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #0077cc, #005fa3);
+      color: white;
+      font-size: 2.5rem;
+      font-weight: bold;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      border: 4px solid white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .profile-card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border: 1px solid #f0f0f0;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .tech-badge {
+      background-color: #e3f2fd;
+      color: #0077cc;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn-profile {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-github { background-color: #333; color: white; }
+    .btn-email { background-color: #0077cc; color: white; }
+
+    /* Dark Mode Overrides for Profile */
+    body.dark-mode .profile-card {
+      background-color: #2d3748;
+      border-color: #4a5568;
+      color: #e2e8f0;
+    }
+    body.dark-mode .avatar-circle {
+      border-color: #2d3748;
+    }
+    body.dark-mode .tech-badge {
+      background-color: #4a5568;
+      color: #90caf9;
+    }
+  </style>
 </head>
 <body>
   <header><div id="nav-container"></div></header>
 
   <main class="content">
     <button id="theme-toggle" class="theme-btn">🌙 Toggle Dark Mode</button>
-    <section>
-      <h2>About Me</h2>
-      <p>Hi, I’m <strong>Sagar Ghising</strong>, a BSc Computer Science student with a passion for mobile app development and creative coding.</p>
-      <p>This site is part of my Learning Journal for the Mobile Application Development unit, where I document my progress, share projects, and reflect on what I’ve learned.</p>
+
+    <div class="profile-header">
+      <div class="avatar-circle">SG</div>
+      <h2>Sagar Ghising</h2>
+      <p style="color: #666; font-size: 0.95rem;">BSc Computer Science Student</p>
+    </div>
+
+    <section class="profile-card">
+      <h3 style="margin-bottom: 10px; color: #0077cc;">About Me</h3>
+      <p>
+        Hi! I’m a passionate student developer focusing on mobile app development and creative coding.
+        This PWA is part of my Learning Journal for the <strong>FGCT6021 Mobile Application Development</strong> unit.
+      </p>
+      <p style="margin-top: 10px;">
+        My goal is to bridge the gap between web and native experiences using modern web technologies.
+      </p>
+
+      <div class="action-buttons">
+        <a href="https://github.com/Sagarghising-bee" target="_blank" class="btn-profile btn-github">
+          GitHub
+        </a>
+        <a href="sagarghising359@gmail.com" class="btn-profile btn-email">
+          Email Me
+        </a>
+      </div>
     </section>
+
+    <section class="profile-card">
+      <h3 style="margin-bottom: 15px; color: #0077cc;">Tech Stack</h3>
+      <p style="font-size: 0.9rem; margin-bottom: 10px;">Technologies used in this project:</p>
+      <div class="tech-stack">
+        <span class="tech-badge">Python Flask</span>
+        <span class="tech-badge">JavaScript (ES6)</span>
+        <span class="tech-badge">PWA / Service Workers</span>
+        <span class="tech-badge">HTML5 Canvas</span>
+        <span class="tech-badge">CSS Flexbox</span>
+        <span class="tech-badge">JSON Storage</span>
+      </div>
+    </section>
+
   </main>
 
   <footer><p>© 2025 My Learning Journal</p></footer>
