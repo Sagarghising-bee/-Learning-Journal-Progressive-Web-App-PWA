@@ -20,7 +20,7 @@ The application is deployed live, serving all static frontend assets and managin
 This journal was developed across several weeks, showcasing incremental learning from basic HTML to a full-stack PWA.
 
 ### 🎨 Week 8: Mini Project (Creative Zone & Dashboard)
-* **Creative Zone:** A dedicated drawing interface powered by the HTML5 Canvas API, allowing users to sketch, clear, and download visual reflections as PNG files.
+* **Creative Zone:** An advanced drawing interface powered by the HTML5 Canvas API. Features a fully functional toolbar with custom color selection, dynamic brush sizing, eraser capabilities, and a state-based undo history, allowing users to create complex sketches and download them as PNGs.
 * **Native Dashboard UI:** Completely redesigned the Homepage (`index.html`) using CSS Grid to feature large, touch-friendly navigation cards that mimic a native app home screen.
 * **Touch Event Support:** Implemented complex JavaScript logic to handle `touchstart` and `touchmove` events, ensuring smooth drawing on mobile devices without page scrolling.
 * **Dynamic Greeting:** Added a time-aware greeting system ("Good Morning/Evening") for a personalized user experience.
